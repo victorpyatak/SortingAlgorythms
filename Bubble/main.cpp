@@ -2,47 +2,54 @@
 
 using namespace std;
 
-void addData();
-void bubbleSort();
-void printSortedArr();
+int askArrLen();
+void addData(int a[] , int s);
+void sortArr(int ar[] , int sz);
 
-int arr[100];
-int capacity,
-    temp;
 
-int main(int argc, char const *argv[]) {
+int main() {
 
-    addData();
-    bubbleSort();
-    printSortedArr();
+    int arr[] = {};
+    int elem = askArrLen();
+    addData(arr,elem);
+    sortArr(arr,elem);
 
     return 0;
 }
 
-void addData(){
-    cout << "Enter number of elements in array : ";
-    cin >> capacity;
 
-    for(int i =0; i < capacity; i++){
-        cout << "Array element " << i + 1 << " : ";
-        cin >> arr[i];
+int askArrLen(){
+    int elements;
+    cout << "Enter number of the elements : ";
+    cin >> elements;
+    return elements;
+}
+
+void addData(int a[] , int s){
+    for(int i = 0; i < s; i++){
+        cout << "Element " << i + 1 << " : ";
+        cin >> a[i];
+        }
+}
+
+void printArray(int ar[] , int sz){
+    for(int i = 0; i < sz; i++){
+        cout << ar[i] << endl;
     }
 }
 
-void bubbleSort(){
-    for(int i = 0; i < capacity ; i++){
-        for(int j = 1; j < capacity ; j++){
-            temp = arr[j];
-            if(arr[j-1]> arr[j]){
-                arr[j] = arr[j - 1];
-                arr[j-1] = temp;
+void sortArr(int ar[] , int sz){
+    int temp;
+    for(int i = 0; i < sz; i++){
+        for(int j = 1; j < sz; j++){
+            temp = ar[j];
+            if(ar[j - 1] > ar[j]){
+                ar[j] = ar[j - 1];
+                ar[j - 1] = temp;
             }
         }
     }
-}
-
-void printSortedArr(){
-    for(int i = 0; i < capacity; i++){
-        cout << arr[i] << " ";
+    for(int i = 0; i < sz; i++){
+        cout << ar[i] << endl;
     }
 }
